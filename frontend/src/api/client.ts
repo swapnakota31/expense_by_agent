@@ -1,7 +1,14 @@
 import axios from "axios";
 
+const resolvedApiBaseUrl =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+
+if (import.meta.env.DEV) {
+  console.log(`[API] Using base URL: ${resolvedApiBaseUrl}`);
+}
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api",
+  baseURL: resolvedApiBaseUrl,
 });
 
 // Attach token on every request if available

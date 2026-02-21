@@ -33,6 +33,11 @@ const LoginPage = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4">
       <form onSubmit={handleSubmit} className="w-full max-w-md rounded-lg bg-white p-6 shadow">
+        {import.meta.env.DEV && (
+          <p className="mb-3 rounded bg-gray-100 p-2 text-xs text-gray-700">
+            Connected API: {import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api"}
+          </p>
+        )}
         <h1 className="mb-4 text-2xl font-bold">Login</h1>
         {error && <p className="mb-3 rounded bg-red-100 p-2 text-sm text-red-700">{error}</p>}
         <input
